@@ -1,0 +1,23 @@
+{
+  "name": "quick-jot-mg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1 ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathiasGR27/Quick-jot-MG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MathiasGR27/Quick-jot-MG/issues"
+  },
+  "homepage": "https://github.com/MathiasGR27/Quick-jot-MG#readme",
+  "description": "",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
