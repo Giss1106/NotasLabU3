@@ -88,9 +88,9 @@ const renderNotes = () => {
 };
 
 window.addEventListener("beforeinstallprompt", (e) => {
-    console.log("Evento por defecto anulado")
-    e.preventDefault(); //Prevenir el comportamiento por defecto del navegador
-    deferredPrompt = e; //Guardar el evento para usarlo después
+  console.log("Evento por defecto anulado")
+  e.preventDefault(); //Prevenir el comportamiento por defecto del navegador
+  deferredPrompt = e; //Guardar el evento para usarlo después
 });
 
 window.addEventListener("load", async () => {
@@ -124,20 +124,26 @@ window.addEventListener("load", async () => {
     }
   });
 
-  if(navigator.serviceWorker){
-        const res = await navigator.serviceWorker.register("/sw.js");
-        if(res){
-            console.log("Service Worker registered successfully.");
-        }
+  if (navigator.serviceWorker) {
+    const basePath = location.hostname === "localhost" ? "" : "/Quick-jot-MG";
+    try {
+      const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
+      if (res) {
+        console.log("Service Worker registered successfully.");
+      }
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
     }
-    const bannerInstall = document.querySelector("#banner-install");
-    bannerInstall.addEventListener("click", async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt(); //Mostrar el banner de instalación
-            const response = await deferredPrompt.userChoice; //Esperar la respuesta del usuario
-            if (response.outcome === "accepted") {
-                console.log("Usuario aceptó la instalación de la PWA");
-            }
-        }
-    });
+  }
+
+  const bannerInstall = document.querySelector("#banner-install");
+  bannerInstall.addEventListener("click", async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt(); // Mostrar el banner de instalación
+      const response = await deferredPrompt.userChoice; // Esperar respuesta del usuario
+      if (response.outcome === "accepted") {
+        console.log("Usuario aceptó la instalación de la PWA");
+      }
+    }
+  });
 });
