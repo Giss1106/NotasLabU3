@@ -1,4 +1,29 @@
 {
-  "description": "En este arhivo se va a configuar el manifiesto de la aplicación web."
+  "lang": "es",
+  "short_name": "Quick Jot Espe ",
+  "name": "Quick Jot Espe MG",
+  "description": "Aplicacion que permite tomar notas de forma sencilla y rapida",
+  "background_color": "#1a4d80",
+  "theme_color": "#1a4d80",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "scope": ".",
+  "icons": [{
+      "src": "src/images/icons/144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "src/images/icons/192x192.png",
+      "sizes": "192x192"
+    }, {
+      "src": "src/images/icons/256x256.png",
+      "sizes": "256x256"
+    } ,{
+      "src": "src/images/icons/384x384.png",
+      "sizes": "384x384"
+    }, {
+      "src": "src/images/icons/512x512.png",
+        "sizes": "512x512"
+    }]
 }
-    

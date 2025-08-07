@@ -4,6 +4,7 @@ let BTN_SHOW_POST;
 let BTN_CANCEL_POST;
 let FORM;
 let NOTES_CONTAINER;
+let deferredPrompt;
 
 const STORAGE_KEY = "quickJotNotes";
 const OVERLAY = document.querySelector("#modal-overlay");
@@ -86,6 +87,12 @@ const renderNotes = () => {
   notes.forEach(({ title, description }) => addNoteCard(title, description));
 };
 
+window.addEventListener("beforeinstallprompt", (e) => {
+    console.log("Evento por defecto anulado")
+    e.preventDefault(); //Prevenir el comportamiento por defecto del navegador
+    deferredPrompt = e; //Guardar el evento para usarlo después
+});
+
 window.addEventListener("load", async () => {
   MAIN = document.querySelector("#main");
   MODAL_POST = document.querySelector("#modal-post-section");
@@ -118,9 +125,19 @@ window.addEventListener("load", async () => {
   });
 
   if(navigator.serviceWorker){
-        const res = await navigator.serviceWorker.register("../sw.js");
+        const res = await navigator.serviceWorker.register("/sw.js");
         if(res){
             console.log("Service Worker registered successfully.");
         }
     }
+    const bannerInstall = document.querySelector("#banner-install");
+    bannerInstall.addEventListener("click", async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); //Mostrar el banner de instalación
+            const response = await deferredPrompt.userChoice; //Esperar la respuesta del usuario
+            if (response.outcome === "accepted") {
+                console.log("Usuario aceptó la instalación de la PWA");
+            }
+        }
+    });
 });
