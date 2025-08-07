@@ -7,8 +7,8 @@
   "theme_color": "#1a4d80",
   "orientation": "portrait",
   "display": "standalone",
-  "start_url": ".",
-  "scope": ".",
+  "start_url": "./",
+  "scope": "./",
   "icons": [{
       "src": "src/images/icons/144x144.png",
       "sizes": "144x144",
