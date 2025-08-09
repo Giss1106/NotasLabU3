@@ -19,9 +19,9 @@ Quick Jot MG es una **aplicación web progresiva (PWA)** diseñada para tomar y 
 
 ## Demostracion en Movil
 
-| Vista mediante GithubPages | Instalacion de aplicacion| Aplicacion Instalada | Visualizacion en aplicacion instalada |
+| Vista mediante GithubPages | Instalacion de aplicacion| Aplicacion Instalada | Visualizacion en aplicacion instalada | Mostrar Notificacion |
 |-----------------|--------------------|------------------|------------------|
-| ![Vista GitHub Pages](./src/images/docs/aplicaciondesplegadaengithubpages.png) | ![Instalacion](./src/images/docs/instalaciondeaplicacion.png) | ![Aplicacion Instalada](./src/images/docs/aplicacioninstalada.png) |![Visualizacion Aplicacion](./src/images/docs/visualizacionencelular.png) |
+| ![Vista GitHub Pages](./src/images/docs/aplicaciondesplegadaengithubpages.png) | ![Instalacion](./src/images/docs/instalaciondeaplicacion.png) | ![Aplicacion Instalada](./src/images/docs/aplicacioninstalada.png) |![Visualizacion Aplicacion](./src/images/docs/visualizacionencelular.png) |![Notificacion de Instalacion](./src/images/docs/MostrarNotificacion.png) |
 
 ## Instalación y ejecución en desarrollo
 
