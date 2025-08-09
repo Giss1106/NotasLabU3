@@ -124,12 +124,18 @@ window.addEventListener("load", async () => {
     }
   });
 
+  await Notification.requestPermission();
   if (navigator.serviceWorker) {
     const basePath = location.hostname === "localhost" ? "" : "/Quick-jot-MG";
     try {
       const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
       if (res) {
-        console.log("Service Worker registered successfully.");
+        const ready = await navigator.serviceWorker.ready;
+        ready.showNotification("EspeNotes", {
+          body: "La aplicación se ha instalado correctamente",
+          icon: `/src/images/icons/256X256.png`,
+          vibrate: [100, 50, 200],
+        });
       }
     } catch (error) {
       console.error("Service Worker registration failed:", error);
