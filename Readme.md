@@ -24,7 +24,8 @@ NotasLabU3 es una aplicación web progresiva (PWA) diseñada para crear, gestion
 - Progressive Web App (manifest.webmanifest y Service Worker)
 
 ---
-
+Imagenes Ejecucion: 
+![Navegador](src/images/docs/Navegador.png)
 ## Instalación y ejecución local
 
 1. Clona el repositorio:
@@ -43,4 +44,4 @@ Gracias al Service Worker y al archivo manifest.webmanifest, esta app puede inst
 
 El Service Worker registra el archivo sw.js para cachear recursos y permitir el uso offline.
 
-Imagenes Ejecucion: 
+
