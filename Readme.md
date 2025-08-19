@@ -1,6 +1,6 @@
 # Quick Jot MG - PWA
 
-Quick Jot MG es una **aplicación web progresiva (PWA)** diseñada para tomar y gestionar notas de forma rápida y sencilla, con la capacidad de instalarse en dispositivos móviles y funcionar incluso sin conexión a internet.
+Notes MG es una **aplicación web progresiva (PWA)** diseñada para tomar y gestionar notas de forma rápida y sencilla, con la capacidad de instalarse en dispositivos móviles y funcionar incluso sin conexión a internet.
 
 ## Características principales
 
@@ -10,12 +10,6 @@ Quick Jot MG es una **aplicación web progresiva (PWA)** diseñada para tomar y 
 - **Guardado automático** en `localStorage` para persistencia local.
 - **Diseño responsive** adaptable a móviles y escritorio.
 - **PWA instalable** gracias a `manifest.webmanifest` y `Service Worker`.
-
-## Demostracion en PC
-
-| Vista principal | Modal de nueva nota | Detalles de nota |
-|-----------------|--------------------|------------------|
-| ![Vista principal](./src/images/docs/vistaprincipal.png) | ![Agregar nota](./src/images/docs/agreagacionnota.png) | ![Detalles](./src/images/docs/detalleNota.png) |
 
 ## Demostracion en Movil
 
@@ -27,10 +21,10 @@ Quick Jot MG es una **aplicación web progresiva (PWA)** diseñada para tomar y 
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/MathiasGR27/Quick-jot-MG.git
+git clone https://github.com/MathiasGR27/NotesMG
 
 # Entrar al directorio
-cd Quick-jot-MG
+cd NotesMG
 
 # Instalar dependencias (si aplica)
 npm install
@@ -50,7 +44,7 @@ En el archivo principal del proyecto se incluyó este fragmento de código:
 
 ```javascript
 if (navigator.serviceWorker) {
-    const basePath = location.hostname === "localhost" ? "" : "/Quick-jot-MG";
+    const basePath = location.hostname === "localhost" ? "" : "/NotesMG";
     try {
       const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
       if (res) {
@@ -63,40 +57,24 @@ if (navigator.serviceWorker) {
 ```
 
 Este bloque detecta si el navegador soporta **Service Workers** y registra el archivo `sw.js`.  
-La variable `basePath` permite que el registro funcione tanto en desarrollo (`localhost`) como en producción (GitHub Pages en `/Quick-jot-MG`).  
+La variable `basePath` permite que el registro funcione tanto en desarrollo (`localhost`) como en producción (GitHub Pages en `/NotesMG`).  
 El Service Worker se encarga de **cachear los recursos** para que la aplicación pueda ejecutarse offline y ser instalable en el celular.
 
-## Estructura del proyecto
-```
-Quick-jot-MG/
-├── src/
-│   ├── css/
-│   │   └── app.css
-│   ├── images/
-│   │   └── docs
-│   │   └── icons
-│   ├── js/
-│   │   └── app.js
-├── index.html
-├── manifest.json
-├── sw.js
-└── README.md
-```
 
 ## Despliegue en GitHub Pages
 
 Para desplegar esta PWA en GitHub Pages:
 1. Sube el proyecto a un repositorio en GitHub.
 2. Activa GitHub Pages en la rama `main`.
-3. Ajusta la ruta base (`basePath`) para que apunte a `/Quick-jot-MG` o al nombre de tu Repositorio.
+3. Ajusta la ruta base (`basePath`) para que apunte a `/NotesMG` o al nombre de tu Repositorio.
 
 ## Configuración del Manifest
 
 ```json
 {
   "lang": "es",
-  "short_name": "Quick Jot Espe",
-  "name": "Quick Jot Espe MG",
+  "short_name": "NotesMG",
+  "name": "NotesMG",
   "description": "Aplicacion que permite tomar notas de forma sencilla y rapida",
   "background_color": "#1a4d80",
   "theme_color": "#1a4d80",

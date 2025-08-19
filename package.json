@@ -1,5 +1,5 @@
 {
-  "name": "quick-jot-mg",
+  "name": "notesmg",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,17 +7,66 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MathiasGR27/Quick-jot-MG.git"
+    "url": "git+https://github.com/MathiasGR27/NotesMG.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MathiasGR27/Quick-jot-MG/issues"
+    "url": "https://github.com/MathiasGR27/NotesMG/issues"
   },
-  "homepage": "https://github.com/MathiasGR27/Quick-jot-MG#readme",
-  "description": "",
+  "homepage": "https://github.com/MathiasGR27/NotesMG#readme",
+  "description": "NotesMG es una **aplicación web progresiva (PWA)** diseñada para tomar y gestionar notas de forma rápida y sencilla, con la capacidad de instalarse en dispositivos móviles y funcionar incluso sin conexión a internet.",
   "devDependencies": {
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "async": "^3.2.6",
+    "call-bound": "^1.0.4",
+    "call-bind-apply-helpers": "^1.0.2",
+    "color-convert": "^2.0.1",
+    "chalk": "^4.1.2",
+    "color-name": "^1.1.4",
+    "corser": "^2.0.1",
+    "debug": "^4.4.1",
+    "dunder-proto": "^1.0.1",
+    "es-define-property": "^1.0.1",
+    "es-errors": "^1.3.0",
+    "es-object-atoms": "^1.1.1",
+    "eventemitter3": "^4.0.7",
+    "follow-redirects": "^1.15.9",
+    "function-bind": "^1.1.2",
+    "get-intrinsic": "^1.3.0",
+    "get-proto": "^1.0.1",
+    "has-flag": "^4.0.0",
+    "gopd": "^1.2.0",
+    "hasown": "^2.0.2",
+    "has-symbols": "^1.1.0",
+    "html-encoding-sniffer": "^3.0.0",
+    "he": "^1.2.0",
+    "http-proxy": "^1.18.1",
+    "iconv-lite": "^0.6.3",
+    "math-intrinsics": "^1.1.0",
+    "mime": "^1.6.0",
+    "minimist": "^1.2.8",
+    "ms": "^2.1.3",
+    "object-inspect": "^1.13.4",
+    "opener": "^1.5.2",
+    "qs": "^6.14.0",
+    "portfinder": "^1.0.37",
+    "requires-port": "^1.0.0",
+    "safe-buffer": "^5.1.2",
+    "safer-buffer": "^2.1.2",
+    "secure-compare": "^3.0.1",
+    "side-channel": "^1.1.0",
+    "side-channel-list": "^1.0.0",
+    "side-channel-map": "^1.0.1",
+    "side-channel-weakmap": "^1.0.2",
+    "supports-color": "^7.2.0",
+    "union": "^0.5.0",
+    "url-join": "^4.0.1",
+    "whatwg-encoding": "^2.0.0",
+    "ansi-styles": "^4.3.0"
   }
 }

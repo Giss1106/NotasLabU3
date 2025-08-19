@@ -3,21 +3,21 @@ self.addEventListener('install', (event) => {
     const wu = new Promise((resolve, reject) => {
         try {
             setTimeout(() => {
-                const addFiles = ""; // Aquí puedes agregar los archivos que deseas almacenar en caché
+                const addFiles = ""; 
                 console.log("Service Worker installed Espe");
                 resolve();
             }, 1000);
-            self.skipWaiting(); // Forzar la activación inmediata del Service Worker
+            self.skipWaiting();
         } catch (error) {
             reject(error);
         }
     });
-    event.waitUntil(wu); // Asegura que la instalación se complete antes de activar el Service Worker
+    event.waitUntil(wu);
 });
 self.addEventListener('activate', (event) => {
     //Elimina cache antigua si es necesario
     console.log("Service Worker activated");
-    event.waitUntil(clients.claim()); // Asegura que el Service Worker tome el control de las páginas abiertas
+    event.waitUntil(clients.claim());
 });
 self.addEventListener('fetch', (event) => {
     console.log("Cacheando claims");

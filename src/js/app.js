@@ -1,98 +1,93 @@
-let MAIN;
-let MODAL_POST;
-let BTN_SHOW_POST;
-let BTN_CANCEL_POST;
-let FORM;
-let NOTES_CONTAINER;
-let deferredPrompt;
-
+// Variables globales
+let MAIN, MODAL_POST, BTN_SHOW_POST, BTN_CANCEL_POST, FORM, NOTES_CONTAINER, deferredPrompt;
 const STORAGE_KEY = "quickJotNotes";
 const OVERLAY = document.querySelector("#modal-overlay");
 const DETAIL_TITLE = document.querySelector("#detail-title");
 const DETAIL_DESC = document.querySelector("#detail-description");
 const DETAIL_CLOSE_BTN = document.querySelector("#btn-detail-close");
+const SNACKBAR = document.querySelector('#snackbar');
 
-// Mostrar modal
-const ShowModalPost = () => {
-  MODAL_POST.classList.add("active");
-};
-
-// Cerrar modal
+// Mostrar / cerrar modales
+const ShowModalPost = () => MODAL_POST.classList.add("active");
 const ClosePostModal = () => {
   MODAL_POST.classList.remove("active");
   FORM.reset();
 };
 
-const openDetailModal = (title, description) => {
+function openDetailModal(title, description) {
   DETAIL_TITLE.textContent = title;
   DETAIL_DESC.textContent = description;
   OVERLAY.classList.add("active");
-};
+}
 
-const closeDetailModal = () => {
+function closeDetailModal() {
   OVERLAY.classList.remove("active");
-};
+}
+
+
 
 // Obtener descripción corta
 const getShortDescription = (text, wordCount = 10) => {
   const words = text.split(/\s+/);
-  if (words.length <= wordCount) return text;
-  return words.slice(0, wordCount).join(" ") + "...";
+  return words.length <= wordCount ? text : words.slice(0, wordCount).join(" ") + "...";
 };
 
-// Crear y agregar card al DOM
+const showSnackbar = (message, actionText = '', actionHandler = null) => {
+  if (!SNACKBAR) return;
+
+  const data = {
+    message: message,
+    timeout: 3000, // Duración: 3 segundos
+  };
+
+  if (actionText && actionHandler) {
+    data.actionHandler = actionHandler;
+    data.actionText = actionText;
+  }
+
+  SNACKBAR.MaterialSnackbar.showSnackbar(data);
+};
+
+// Crear y agregar tarjeta de nota
 const addNoteCard = (title, description) => {
   const card = document.createElement("div");
   card.className = "demo-card-square mdl-card mdl-shadow--2dp";
-
-  const shortDescription = getShortDescription(description, 10);
-
   card.innerHTML = `
-  <div class="mdl-card__title mdl-card--expand" style="background: var(--primary); color: var(--white);">
-    <h2 class="mdl-card__title-text">${title}</h2>
-  </div>
-  <div class="mdl-card__supporting-text">${shortDescription}</div>
-  <div class="mdl-card__actions mdl-card--border">
-    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn-view-details" style="color: var(--accent);">
-      Ver detalles
-    </button>
-  </div>
-`;
-
-
+    <div class="mdl-card__title mdl-card--expand" style="background: var(--primary); color: var(--white);">
+      <h2 class="mdl-card__title-text">${title}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">${getShortDescription(description)}</div>
+    <div class="mdl-card__actions mdl-card--border">
+      <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn-view-details" style="color: var(--accent);">
+        Ver detalles
+      </button>
+    </div>
+  `;
   NOTES_CONTAINER.appendChild(card);
 
-  const btnView = card.querySelector(".btn-view-details");
-  btnView.addEventListener("click", () => {
-    openDetailModal(title, description);
-  });
+  card.querySelector(".btn-view-details").addEventListener("click", () => openDetailModal(title, description));
 
-  if (window.componentHandler) {
-    componentHandler.upgradeElement(card);
-  }
+  if (window.componentHandler) componentHandler.upgradeElement(card);
 };
 
-const saveNotesToStorage = (notes) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
-};
-
+// Guardar / obtener notas en localStorage
+const saveNotesToStorage = notes => localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
 const getNotesFromStorage = () => {
   const notes = localStorage.getItem(STORAGE_KEY);
   return notes ? JSON.parse(notes) : [];
 };
-
 const renderNotes = () => {
   NOTES_CONTAINER.innerHTML = "";
-  const notes = getNotesFromStorage();
-  notes.forEach(({ title, description }) => addNoteCard(title, description));
+  getNotesFromStorage().forEach(({ title, description }) => addNoteCard(title, description));
 };
 
-window.addEventListener("beforeinstallprompt", (e) => {
-  console.log("Evento por defecto anulado")
-  e.preventDefault(); //Prevenir el comportamiento por defecto del navegador
-  deferredPrompt = e; //Guardar el evento para usarlo después
+// Evento PWA install
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredPrompt = e;
 });
 
+// Inicialización
 window.addEventListener("load", async () => {
   MAIN = document.querySelector("#main");
   MODAL_POST = document.querySelector("#modal-post-section");
@@ -105,51 +100,58 @@ window.addEventListener("load", async () => {
   BTN_CANCEL_POST.addEventListener("click", ClosePostModal);
   DETAIL_CLOSE_BTN.addEventListener("click", closeDetailModal);
 
+  OVERLAY.addEventListener("click", (e) => {
+  if (e.target === OVERLAY) closeDetailModal();
+});
+
   renderNotes();
 
-  FORM.addEventListener("submit", (e) => {
+  FORM.addEventListener("submit", e => {
     e.preventDefault();
-
     const title = document.querySelector("#title").value.trim();
     const description = document.querySelector("#description").value.trim();
+    if (!title || !description) return;
 
-    if (title && description) {
-      addNoteCard(title, description);
+    addNoteCard(title, description);
+    const notes = getNotesFromStorage();
+    notes.push({ title, description });
+    saveNotesToStorage(notes);
+    ClosePostModal();
 
-      const notes = getNotesFromStorage();
-      notes.push({ title, description });
-      saveNotesToStorage(notes);
-
-      ClosePostModal();
-    }
+    showSnackbar("¡Nota guardada correctamente!");
   });
 
+  // Notificaciones
   await Notification.requestPermission();
-  if (navigator.serviceWorker) {
-    const basePath = location.hostname === "localhost" ? "" : "/Quick-jot-MG";
+
+  // Service Worker
+const permission = await Notification.requestPermission();
+
+if (permission === "granted") {
+  if ('serviceWorker' in navigator) {
     try {
-      const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
-      if (res) {
-        const ready = await navigator.serviceWorker.ready;
-        ready.showNotification("EspeNotes", {
-          body: "La aplicación se ha instalado correctamente",
-          icon: `/src/images/icons/256X256.png`,
-          vibrate: [100, 50, 200],
-        });
-      }
-    } catch (error) {
-      console.error("Service Worker registration failed:", error);
+      const sw = await navigator.serviceWorker.register('./sw.js');
+      const ready = await navigator.serviceWorker.ready;
+      ready.showNotification("Mis Notas MG-PWA", {
+        body: "La aplicación está lista y offline!",
+        icon: "./src/images/icons/256X256.png",
+        vibrate: [100, 50, 200],
+      });
+    } catch (err) {
+      console.error("SW failed:", err);
     }
   }
+} else {
+  console.warn("El usuario no permitió notificaciones");
+} 
 
+  // Banner instalación
   const bannerInstall = document.querySelector("#banner-install");
   bannerInstall.addEventListener("click", async () => {
     if (deferredPrompt) {
-      deferredPrompt.prompt(); // Mostrar el banner de instalación
-      const response = await deferredPrompt.userChoice; // Esperar respuesta del usuario
-      if (response.outcome === "accepted") {
-        console.log("Usuario aceptó la instalación de la PWA");
-      }
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice;
+      console.log(choice.outcome === "accepted" ? "App instalada" : "Usuario rechazó");
     }
   });
 });
