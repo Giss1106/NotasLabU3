@@ -13,9 +13,9 @@ Notes MG es una **aplicación web progresiva (PWA)** diseñada para tomar y gest
 
 ## Demostracion en Movil
 
-| Vista mediante GithubPages | Instalacion de aplicacion| Aplicacion Instalada | Visualizacion en aplicacion instalada | Mostrar Notificacion |
-|-----------------|--------------------|------------------|------------------|------------------|
-| ![Vista GitHub Pages](./src/images/docs/aplicaciondesplegadaengithubpages.png) | ![Instalacion](./src/images/docs/instalaciondeaplicacion.png) | ![Aplicacion Instalada](./src/images/docs/aplicacioninstalada.png) |![Visualizacion Aplicacion](./src/images/docs/visualizacionencelular.png) |![Notificacion de Instalacion](./src/images/docs/MostrarNotificacion.png) |
+| Vista mediante GithubPages | Instalacion de aplicacion| Aplicacion Instalada | Visualizacion en aplicacion instalada | Agregar nota | Nota agregada |
+|-----------------|--------------------|------------------|------------------|------------------|------------------|
+| ![Vista GitHub Pages](./src/images/docs/paginaprincipal.png) | ![Instalacion](./src/images/docs/instalacion.png) | ![Aplicacion Instalada](./src/images/docs/instalada.png) |![Visualizacion Aplicacion](./src/images/docs/aplicacionabierta.png.png) |![Agregacion nota](./src/images/docs/notagregada.png) |![Detalle de nota](./src/images/docs/detallenota.png) |
 
 ## Instalación y ejecución en desarrollo
 
