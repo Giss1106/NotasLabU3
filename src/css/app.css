@@ -1,24 +1,20 @@
 :root {
-  /* Colores institucionales */
-  --primary: #006633;
-  --dark-primary: #004d26;
-  --light-primary: #339966;
-  --secondary: #ffd700;
-  --dark-secondary: #b8860b;
-  --light-secondary: #ffec8b;
-  --accent: #cc0000;
-  --gray: #666666;
-  --light-gray: #f5f5f5;
-  --dark-gray: #333333;
-  --error: #cc0000;
-  --success: #006600;
-  --warning: #ff8c00;
-  --white: #fff;
-  --black: #000;
-  --fontFamily: "Roboto", sans-serif;
+  --primary: #0077b6;
+  --dark-primary: #023e8a;
+  --light-primary: #caf0f8;
+  --secondary: #ff6b6b;
+  --accent: #ff9f1c;
+  --gray: #6c757d;
+  --light-gray: #f8f9fa;
+  --dark-gray: #343a40;
+  --white: #ffffff;
+  --black: #000000;
+  --success: #38b000;
+  --warning: #ffb703;
+  --error: #d00000;
+  --fontFamily: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body y layout general */
 body {
   background-color: var(--light-gray);
   color: var(--dark-gray);
@@ -27,28 +23,20 @@ body {
   padding: 0;
 }
 
-/* Header fijo */
 .mdl-layout__header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
   background-color: var(--primary) !important;
   color: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .mdl-layout__header-row .mdl-button {
   margin-left: 12px;
 }
 
-/* Contenido debajo del header */
 .mdl-layout__content {
   padding: 128px 16px 16px 16px;
 }
 
-/* Contenedor de notas */
 #notes-container {
   display: flex;
   flex-wrap: wrap;
@@ -56,64 +44,63 @@ body {
   justify-content: flex-start;
 }
 
-/* Card de nota */
+/* Card */
 .demo-card-square.mdl-card {
   width: 320px;
   min-height: 160px;
   margin-bottom: 16px;
   background-color: var(--white);
-  color: var(--dark-gray);
-  font-family: var(--fontFamily);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .demo-card-square > .mdl-card__title {
+  background: var(--dark-primary);
   color: var(--white);
-  background: var(--primary);
+  padding: 16px;
 }
 
 .demo-card-square > .mdl-card__actions {
   margin-top: auto;
+  padding: 12px 16px;
 }
 
-/* Botón flotante mejorado */
+/* Botón flotante */
 #btn-upload-post {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 1100;
   background-color: var(--secondary) !important;
-  color: var(--black) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: var(--white) !important;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #btn-upload-post:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Modal para agregar nota mejorado */
+/* Modal */
 #modal-post-section {
-  display: block;
-  opacity: 0;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1500;
-  overflow-y: auto;
-  transform: translateY(100vh);
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  padding: 24px;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1500;
+  transform: translateY(100vh);
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 #modal-post-section.active {
@@ -125,16 +112,15 @@ body {
 #note-form {
   background: var(--white);
   padding: 32px;
-  border-radius: 12px;
+  border-radius: 16px;
   max-width: 500px;
   width: 100%;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
-/* Inputs y textarea */
 .mdl-textfield {
   width: 100%;
 }
@@ -144,29 +130,26 @@ body {
 }
 
 /* Botones del modal */
-#btn-post-cancel, #note-form button[type="submit"] {
-  margin-top: 8px;
-  padding: 10px 16px;
-  border-radius: 6px;
-}
-
 #note-form button[type="submit"] {
   background-color: var(--primary) !important;
   color: var(--white) !important;
+  border-radius: 8px;
 }
 
 #btn-post-cancel {
-  background-color: var(--accent) !important;
+  background-color: var(--error) !important;
   color: var(--white) !important;
+  border-radius: 8px;
 }
 
+/* Modal detalle */
 .modal-overlay {
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   inset: 0;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -179,22 +162,16 @@ body {
 }
 
 .modal-detail {
-  background: #fff;
+  background: var(--white);
   width: 90%;
-  max-width: 600px;   /* ancho máximo */
-  border-radius: 12px;
+  max-width: 600px;
+  border-radius: 16px;
+  padding: 24px;
   transform: scale(0.95);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-
-  /* Alto automático según contenido */
-  height: auto;
-  max-height: none;
-  overflow: visible;  /* sin scroll interno */
-  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
-
 
 .modal-overlay.active .modal-detail {
   transform: scale(1);
@@ -205,13 +182,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding-bottom: 12px;
   border-bottom: 1px solid #ddd;
 }
 
 .modal-header h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .close-btn {
@@ -219,63 +196,36 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  line-height: 1;
-  color: #333;
+  color: var(--gray);
 }
 
 .modal-content {
-  padding: 16px 24px;
+  padding-top: 16px;
   font-size: 1rem;
-  color: #444;
+  color: var(--dark-gray);
   line-height: 1.5;
-  /* Evitamos scroll interno */
-  max-height: none;
-  overflow: visible;
 }
 
-/* Responsivo */
-@media (max-width: 480px) {
-  .modal-detail {
-    width: 95%;
-  }
-
-  .modal-header, .modal-content {
-    padding: 12px 16px;
-  }
-
-  .modal-header h3 {
-    font-size: 1rem;
-  }
-
-  .modal-content {
-    font-size: 0.95rem;
-  }
-}
-
-/* Snackbar estilos opcionales */
-.mdl-snackbar__text {
-  color: #fff;
-}
-
+/* Snackbar */
 .mdl-snackbar {
-  background-color: #1a4d80;
+  background-color: var(--primary);
+  border-radius: 8px;
 }
 
+.mdl-snackbar__text {
+  color: var(--white);
+}
 
-/* Por defecto, mostrar ícono + texto */
+/* Botón de instalar */
 #banner-install i {
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 
-/* Pantallas pequeñas: ocultar el texto */
 @media (max-width: 600px) {
   #banner-install .install-text {
     display: none;
   }
-}
 
-/* Responsive */
-@media (max-width: 360px) {
   .demo-card-square.mdl-card {
     width: 90vw;
   }

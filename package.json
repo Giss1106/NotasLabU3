@@ -7,15 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MathiasGR27/NotesMG.git"
+    "url": "git+https://github.com/Giss1106/NotasLabU3.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MathiasGR27/NotesMG/issues"
+    "url": "https://github.com/Giss1106/NotasLabU3/issues"
   },
-  "homepage": "https://github.com/MathiasGR27/NotesMG#readme",
+  "homepage": "https://github.com/Giss1106/NotasLabU3#readme",
   "description": "NotesMG es una **aplicación web progresiva (PWA)** diseñada para tomar y gestionar notas de forma rápida y sencilla, con la capacidad de instalarse en dispositivos móviles y funcionar incluso sin conexión a internet.",
   "devDependencies": {
     "http-server": "^14.1.1"
