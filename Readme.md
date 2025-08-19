@@ -25,7 +25,9 @@ NotasLabU3 es una aplicación web progresiva (PWA) diseñada para crear, gestion
 
 ---
 Imagenes Ejecucion: 
-![Navegador](src/images/docs/Navegador.png)
+![Navegador](src/images/docs/Navegador.png),
+Demostracion en Movil:
+
 ## Instalación y ejecución local
 
 1. Clona el repositorio:

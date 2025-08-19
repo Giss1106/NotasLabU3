@@ -23,10 +23,16 @@ body {
   padding: 0;
 }
 
+/* Header fijo */
 .mdl-layout__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   background-color: var(--primary) !important;
   color: var(--white);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mdl-layout__header-row .mdl-button {
@@ -37,6 +43,7 @@ body {
   padding: 128px 16px 16px 16px;
 }
 
+/* Contenedor de notas */
 #notes-container {
   display: flex;
   flex-wrap: wrap;
@@ -44,7 +51,7 @@ body {
   justify-content: flex-start;
 }
 
-/* Card */
+/* Card de nota */
 .demo-card-square.mdl-card {
   width: 320px;
   min-height: 160px;
@@ -58,8 +65,8 @@ body {
 }
 
 .demo-card-square > .mdl-card__title {
-  background: var(--dark-primary);
   color: var(--white);
+  background: var(--dark-primary);
   padding: 16px;
 }
 
@@ -68,7 +75,7 @@ body {
   padding: 12px 16px;
 }
 
-/* Botón flotante */
+/* Botón flotante mejorado */
 #btn-upload-post {
   position: fixed;
   bottom: 24px;
@@ -77,8 +84,12 @@ body {
   background-color: var(--secondary) !important;
   color: var(--white) !important;
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -88,7 +99,11 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Modal */
+#btn-upload-post i {
+  font-size: 32px;
+}
+
+/* Modal para agregar nota */
 #modal-post-section {
   display: flex;
   justify-content: center;
@@ -121,6 +136,7 @@ body {
   gap: 20px;
 }
 
+/* Inputs y textarea */
 .mdl-textfield {
   width: 100%;
 }
@@ -216,14 +232,37 @@ body {
   color: var(--white);
 }
 
-/* Botón de instalar */
-#banner-install i {
-  margin-right: 8px;
+/* Botón instalar app */
+#banner-install {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: var(--white);
+  transition: background-color 0.3s ease;
 }
 
+#banner-install i {
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+#banner-install:hover {
+  background-color: #e68a00;
+}
+
+/* Responsive */
 @media (max-width: 600px) {
   #banner-install .install-text {
     display: none;
+  }
+
+  #banner-install {
+    padding: 8px 12px;
+    font-size: 14px;
+    min-width: auto;
   }
 
   .demo-card-square.mdl-card {
@@ -232,5 +271,17 @@ body {
 
   #note-form {
     padding: 24px;
+  }
+
+  .modal-header, .modal-content {
+    padding: 12px 16px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-content {
+    font-size: 1rem;
   }
 }
