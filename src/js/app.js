@@ -125,25 +125,23 @@ window.addEventListener("load", async () => {
   await Notification.requestPermission();
 
   // Service Worker
-const permission = await Notification.requestPermission();
-
-if (permission === "granted") {
-  if ('serviceWorker' in navigator) {
+await Notification.requestPermission();
+  if (navigator.serviceWorker) {
+    const basePath = location.hostname === "localhost" ? "" : "/NotesMG";
     try {
-      const sw = await navigator.serviceWorker.register('./sw.js');
-      const ready = await navigator.serviceWorker.ready;
-      ready.showNotification("Mis Notas MG-PWA", {
-        body: "La aplicación está lista y offline!",
-        icon: "./src/images/icons/256X256.png",
-        vibrate: [100, 50, 200],
-      });
-    } catch (err) {
-      console.error("SW failed:", err);
+      const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
+      if (res) {
+        const ready = await navigator.serviceWorker.ready;
+        ready.showNotification("NotesMG", {
+          body: "La aplicación se ha instalado correctamente",
+          icon: `/src/images/icons/256X256.png`,
+          vibrate: [100, 50, 200],
+        });
+      }
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
     }
   }
-} else {
-  console.warn("El usuario no permitió notificaciones");
-} 
 
   // Banner instalación
   const bannerInstall = document.querySelector("#banner-install");
