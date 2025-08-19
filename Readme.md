@@ -1,4 +1,4 @@
-# Quick Jot MG - PWA
+# NoteMG - PWA
 
 Notes MG es una **aplicación web progresiva (PWA)** diseñada para tomar y gestionar notas de forma rápida y sencilla, con la capacidad de instalarse en dispositivos móviles y funcionar incluso sin conexión a internet.
 
@@ -15,7 +15,7 @@ Notes MG es una **aplicación web progresiva (PWA)** diseñada para tomar y gest
 
 | Vista mediante GithubPages | Instalacion de aplicacion| Aplicacion Instalada | Visualizacion en aplicacion instalada | Agregar nota | Nota agregada |
 |-----------------|--------------------|------------------|------------------|------------------|------------------|
-| ![Vista GitHub Pages](./src/images/docs/paginaprincipal.png) | ![Instalacion](./src/images/docs/instalacion.png) | ![Aplicacion Instalada](./src/images/docs/instalada.png) |![Visualizacion Aplicacion](./src/images/docs/aplicacionabierta.png.png) |![Agregacion nota](./src/images/docs/notagregada.png) |![Detalle de nota](./src/images/docs/detallenota.png) |
+| ![Vista GitHub Pages](./src/images/docs/paginaprincipal.png) | ![Instalacion](./src/images/docs/instalacion.png) | ![Aplicacion Instalada](./src/images/docs/instalada.png) |![Visualizacion Aplicacion](./src/images/docs/aplicacionabierta.png) |![Agregacion nota](./src/images/docs/notagregada.png) |![Detalle de nota](./src/images/docs/detallenota.png) |
 
 ## Instalación y ejecución en desarrollo
 
